@@ -1,12 +1,10 @@
 Package Textpattern CMS plugin GitHub Action
 =====
 
-This GitHub action packages a source repository containing a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
+This GitHub Action packages a source repository containing a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
 
 Usage
-=====
-
-The action creates installers to `${{ github.workspace }}/packages/`.
+-----
 
 ```yaml
 name: Example Workflow
@@ -23,24 +21,37 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Build
+      id: build
       uses: gocom/action-textpattern-package-plugin@master
 
     - name: Print Built Installers
       run: |
-        cat ${{ github.workspace }}/packages/default/compressed
-        cat ${{ github.workspace }}/packages/default/uncompressed
+        cat ${{ steps.build.outputs.compressed }}
+        cat ${{ steps.build.outputs.uncompressed }}
 ```
 
 Input Arguments
-=====
+-----
 
 * **source**
-  Path to the plugin source directory, relative to the repository root.
+  Path to the plugin source directory, relative to the repository root, if something else than repository root.
+* **output**
+  Path to the output directory where build artifacts are saved to, relative to ```$GITHUB_WORKSPACE```. Defaults to `build/packages`.
+
+Output Variables
+-----
+
 * **name**
-  Name of the created package. Defaults to `default`.
+  Name of the built plugin.
+* **version**
+  Version number from the manifest file.
+* **compressed**
+  Path to the compressed plugin installer file.
+* **uncompressed**
+  Path to the uncompressed plugin installer file.
 
 References
-=====
+-----
 
 * [Development tools for GitHub Actions](https://help.github.com/en/articles/development-tools-for-github-actions)
 * [GitHub Action for creating GitHub Releases](https://github.com/softprops/action-gh-release)

@@ -6,11 +6,15 @@ inputs:
     description: 'Plugin source directory path'
     required: false
     default: ''
-  name:
-    description: 'Name of the built package'
+  output:
+    description: 'Path to the output directory'
     required: false
-    default: 'default'
+    default: 'build/packages'
 outputs:
+  name:
+    description: 'Name of the plugin package'
+  version:
+    description: 'Version number from the plugin manifest file'
   uncompressed:
     description: 'Path to the uncompressed installer file'
   compressed:

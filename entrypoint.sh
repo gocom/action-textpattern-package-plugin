@@ -1,28 +1,40 @@
 #!/usr/bin/env bash
 set -eu
 
-artifacts="${GITHUB_WORKSPACE:-/build}/packages/${INPUT_NAME:-default}"
+main () {
+  local directory file
 
-mkdir -p /packages/
+  directory="${GITHUB_WORKSPACE:-$PWD}/${INPUT_OUTPUT:-build/packages}/"
 
-mkdir -p "$artifacts"
+  mkdir -p "$directory"
 
-compile "${GITHUB_WORKSPACE:-src}/${INPUT_SOURCE:-}" /packages/ > /dev/null
+  compile "${GITHUB_WORKSPACE:-$PWD}/${INPUT_SOURCE:-}" "$directory" > /dev/null
 
-for f in "/packages/"*"_zip.txt"; do
-  if [ -f "$f" ]; then
-    mv "$f" "$artifacts/compressed"
-    echo ::set-output name=compressed::"$artifacts/compressed"
-  fi
+  for file in "$directory"*_zip.txt; do
+    if [ -f "$file" ]; then
+      echo ::set-output name=compressed::"$f"
+    fi
 
-  break
-done
+    break
+  done
 
-for f in "/packages/"*".txt"; do
-  if [ -f "$f" ]; then
-    mv "$f" "$artifacts/uncompressed"
-    echo ::set-output name=uncompressed::"$artifacts/uncompressed"
-  fi
+  for file in "$directory"*.txt; do
+    if [ -f "$file" ] && ! [[ $file == *_zip.txt ]]; then
+      echo ::set-output name=uncompressed::"$file"
+      meta "$file"
+      break
+    fi
+  done
+}
 
-  break
-done
+meta () {
+  local name
+
+  name="$(basename "${1:-abc_unknown_v0.0.0}")"
+  name="${name%.*}"
+
+  echo ::set-output name=name::"${name%_*}"
+  echo ::set-output name=version::"${name#*_v}"
+}
+
+main
