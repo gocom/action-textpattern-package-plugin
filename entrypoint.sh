@@ -20,8 +20,8 @@ done
 
 for f in "/packages/"*".txt"; do
   if [ -f "$f" ]; then
-    mv "$f" "$artifacts/uncomressed"
-    echo ::set-output name=uncompressed::"$artifacts/uncomressed"
+    mv "$f" "$artifacts/uncompressed"
+    echo ::set-output name=uncompressed::"$artifacts/uncompressed"
   fi
 
   break
