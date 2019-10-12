@@ -26,8 +26,8 @@ jobs:
 
     - name: Print Built Installers
       run: |
-        cat ${{ steps.build.outputs.compressed }}
-        cat ${{ steps.build.outputs.uncompressed }}
+        cat ${{ github.workspace }}/${{ steps.build.outputs.compressed }}
+        cat ${{ github.workspace }}/${{ steps.build.outputs.uncompressed }}
 ```
 
 Input Arguments
@@ -36,7 +36,7 @@ Input Arguments
 * **source**
   Path to the plugin source directory, relative to the repository root, if something else than repository root.
 * **output**
-  Path to the output directory where build artifacts are saved to, relative to ```$GITHUB_WORKSPACE```. Defaults to `build/packages`.
+  Path to the output directory where build artifacts are saved to, relative to `$GITHUB_WORKSPACE`. Defaults to `build/packages`.
 
 Output Variables
 -----
@@ -46,9 +46,9 @@ Output Variables
 * **version**
   Version number from the manifest file.
 * **compressed**
-  Path to the compressed plugin installer file.
+  Path to the compressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
 * **uncompressed**
-  Path to the uncompressed plugin installer file.
+  Path to the uncompressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
 
 References
 -----
