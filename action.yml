@@ -1,0 +1,23 @@
+name: 'Package Textpattern CMS plugin'
+description: 'Package your repository as a Textpattern CMS plugin'
+author: 'Jukka Svahn'
+inputs:
+  source:
+    description: 'The plugin source directory path'
+    required: false
+    default: ''
+  name:
+    description: 'Name of the built package'
+    required: false
+    default: 'default'
+outputs:
+  uncompressed:
+    description: 'The package plugin installer code'
+  compressed:
+    description: 'The package plugin installer code in compressed format'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'package'
+  color: 'gray-dark'
