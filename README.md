@@ -1,10 +1,12 @@
 Package Textpattern CMS plugin GitHub Action
 =====
 
-This GitHub Action packages a source repository containing a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
+This [GitHub Action](https://help.github.com/en/articles/about-github-actions) packages a source repository containing a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
 
 Usage
 -----
+
+[Create a workflow file](https://help.github.com/en/articles/configuring-a-workflow) that checkouts your source code and builds it:
 
 ```yaml
 name: Example Workflow
@@ -30,6 +32,8 @@ jobs:
         cat ${{ github.workspace }}/${{ steps.build.outputs.uncompressed }}
 ```
 
+See [rah_flat](https://github.com/gocom/rah_flat) repository for live [workflow examples](https://github.com/gocom/rah_flat/blob/master/.github/workflows), and [action results](https://github.com/gocom/rah_flat/actions) containing uploaded artifacts.
+
 Input Arguments
 -----
 
@@ -49,10 +53,3 @@ Output Variables
   Path to the compressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
 * **uncompressed**
   Path to the uncompressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
-
-References
------
-
-* [Development tools for GitHub Actions](https://help.github.com/en/articles/development-tools-for-github-actions)
-* [GitHub Action for creating GitHub Releases](https://github.com/softprops/action-gh-release)
-* [An Action to upload a release asset via the GitHub Release API](https://github.com/actions/upload-release-asset)
