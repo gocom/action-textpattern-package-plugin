@@ -3,7 +3,7 @@ description: 'Package your repository as a Textpattern CMS plugin'
 author: 'Jukka Svahn'
 inputs:
   source:
-    description: 'The plugin source directory path'
+    description: 'Plugin source directory path'
     required: false
     default: ''
   name:
@@ -12,9 +12,9 @@ inputs:
     default: 'default'
 outputs:
   uncompressed:
-    description: 'The package plugin installer code'
+    description: 'Path to the uncompressed installer file'
   compressed:
-    description: 'The package plugin installer code in compressed format'
+    description: 'Path to the compressed installer file'
 runs:
   using: 'docker'
   image: 'Dockerfile'
