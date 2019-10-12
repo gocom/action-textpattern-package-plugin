@@ -16,9 +16,9 @@ outputs:
   version:
     description: 'Version number from the plugin manifest file'
   uncompressed:
-    description: 'Path to the uncompressed installer file'
+    description: 'Path to the uncompressed installer file, relative to workspace'
   compressed:
-    description: 'Path to the compressed installer file'
+    description: 'Path to the compressed installer file, relative to workspace'
 runs:
   using: 'docker'
   image: 'Dockerfile'

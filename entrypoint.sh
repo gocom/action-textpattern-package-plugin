@@ -2,17 +2,19 @@
 set -eu
 
 main () {
-  local directory file
+  local directory file workspace
 
-  directory="${GITHUB_WORKSPACE:-$PWD}/${INPUT_OUTPUT:-build/packages}/"
+  workspace="${GITHUB_WORKSPACE:-$PWD}"
+
+  directory="$workspace/${INPUT_OUTPUT:-build/packages}/"
 
   mkdir -p "$directory"
 
-  compile "${GITHUB_WORKSPACE:-$PWD}/${INPUT_SOURCE:-}" "$directory" > /dev/null
+  compile "$workspace/${INPUT_SOURCE:-}" "$directory" > /dev/null
 
   for file in "$directory"*_zip.txt; do
     if [ -f "$file" ]; then
-      echo ::set-output name=compressed::"$file"
+      echo ::set-output name=compressed::"${file#$workspace}"
     fi
 
     break
@@ -20,7 +22,7 @@ main () {
 
   for file in "$directory"*.txt; do
     if [ -f "$file" ] && ! [[ $file == *_zip.txt ]]; then
-      echo ::set-output name=uncompressed::"$file"
+      echo ::set-output name=uncompressed::"${file#$workspace}"
       meta "$file"
       break
     fi
