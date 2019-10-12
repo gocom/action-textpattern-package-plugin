@@ -9,7 +9,7 @@ mkdir -p /packages/
 
 mkdir -p "$HOME/packages/$INPUT_NAME"
 
-compile "${GITHUB_WORKSPACE:-}/${INPUT_SOURCE:-}" /packages/ > /dev/null
+compile "${GITHUB_WORKSPACE:-src}/${INPUT_SOURCE:-}" /packages/ > /dev/null
 
 compressed="$HOME/packages/$INPUT_NAME/compressed"
 
