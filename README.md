@@ -25,13 +25,13 @@ jobs:
     - name: Build
       uses: gocom/action-textpattern-package-plugin@master
 
-    - name: Echo Built Installers
+    - name: Print Built Installers
       run: |
         cat ${{ github.workspace }}/packages/default/compressed
-        cat ${{ github.workspace }}/packages/default/compressed
+        cat ${{ github.workspace }}/packages/default/uncompressed
 ```
 
-Input arguments
+Input Arguments
 =====
 
 * **source**
