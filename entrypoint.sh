@@ -22,5 +22,3 @@ for f in "/packages/"*".txt"; do
   echo ::set-output name=uncompressed::"$uncomressed"
   break
 done
-
-echo ::set-output name=tag::"${TAG}"
