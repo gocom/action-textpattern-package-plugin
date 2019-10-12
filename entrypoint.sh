@@ -12,7 +12,7 @@ main () {
 
   for file in "$directory"*_zip.txt; do
     if [ -f "$file" ]; then
-      echo ::set-output name=compressed::"$f"
+      echo ::set-output name=compressed::"$file"
     fi
 
     break
