@@ -14,7 +14,7 @@ main () {
 
   for file in "$directory"*_zip.txt; do
     if [ -f "$file" ]; then
-      echo ::set-output name=compressed::"${file#$workspace}"
+      echo ::set-output name=compressed::"${file#$workspace/}"
     fi
 
     break
@@ -22,7 +22,7 @@ main () {
 
   for file in "$directory"*.txt; do
     if [ -f "$file" ] && ! [[ $file == *_zip.txt ]]; then
-      echo ::set-output name=uncompressed::"${file#$workspace}"
+      echo ::set-output name=uncompressed::"${file#$workspace/}"
       meta "$file"
       break
     fi
