@@ -25,7 +25,7 @@ jobs:
 
     - name: Build
       id: build
-      uses: gocom/action-textpattern-package-plugin@0.1
+      uses: gocom/action-textpattern-package-plugin@master
 
     - name: Print Built Installers
       run: |
