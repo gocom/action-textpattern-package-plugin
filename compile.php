@@ -1,10 +1,24 @@
 <?php
 
+set_error_handler(static function ($errno, $errstr, $errfile, $errline) {
+    \fwrite(\STDERR, "$errno: $errstr in $errfile on line $errline\n");
+
+    exit(1);
+});
+
+set_exception_handler(static function ($exception) {
+    \fwrite(\STDERR, $exception->getMessage() . "\n");
+
+    exit(1);
+});
+
 require __DIR__ . '/vendor/autoload.php';
 
 $workspace = \getenv('GITHUB_WORKSPACE') ?: \getcwd();
 $source = \getenv('INPUT_SOURCE') ?: '';
 $output = \getenv('INPUT_OUTPUT') ?: 'build/packages';
+
+\mkdir("$workspace/$output", 0755, true);
 
 $package = (new \Rah\Mtxpc\Compiler())
     ->useCompression(true)
