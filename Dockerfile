@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y \
 RUN ln -s /usr/local/bin/php /usr/bin/php && \
   mkdir -p /compiler/ && \
   git clone https://github.com/gocom/MassPlugCompiler.git /compiler/bin && \
+  cd /compiler/bin && \
+  git checkout a41446943fb8444dcc838fcedf598b32efac3a9b && \
+  cd - && \
   chmod +x /compiler/bin/compile
 
 ENV PATH "$PATH:/compiler/bin"
