@@ -1,19 +1,33 @@
+FROM composer
+
 FROM php:7.2-cli
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && apt-get install -y \
   bash \
-  git
+  git \
+  unzip \
+  zlib1g-dev \
+  libzip-dev
 
-# Todo replace with a modern Composer package and to allow verifying the download.
-RUN ln -s /usr/local/bin/php /usr/bin/php && \
-  mkdir -p /compiler/ && \
-  git clone https://github.com/gocom/MassPlugCompiler.git /compiler/bin && \
-  cd /compiler/bin && \
-  git checkout a41446943fb8444dcc838fcedf598b32efac3a9b && \
-  cd - && \
-  chmod +x /compiler/bin/compile
+RUN docker-php-ext-install zip
 
-ENV PATH "$PATH:/compiler/bin"
+RUN mkdir -p /composer && mkdir -p /compiler
+
+ENV COMPOSER_HOME = /composer
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+ADD composer.json /compiler/composer.json
+
+ADD composer.lock /compiler/composer.lock
+
+ADD compile.php /compiler/compile.php
+
+RUN cd /compiler \
+  && composer install \
+  && cd -
 
 ADD entrypoint.sh /entrypoint.sh
 
