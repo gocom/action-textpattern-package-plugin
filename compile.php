@@ -18,7 +18,9 @@ $workspace = \getenv('GITHUB_WORKSPACE') ?: \getcwd();
 $source = \getenv('INPUT_SOURCE') ?: '';
 $output = \getenv('INPUT_OUTPUT') ?: 'build/packages';
 
-\mkdir("$workspace/$output", 0755, true);
+if (!\is_dir($output)) {
+    \mkdir("$workspace/$output", 0755, true);
+}
 
 $package = (new \Rah\Mtxpc\Compiler())
     ->useCompression(true)
