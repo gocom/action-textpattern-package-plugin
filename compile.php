@@ -1,12 +1,12 @@
 <?php
 
-set_error_handler(static function ($errno, $errstr, $errfile, $errline) {
+\set_error_handler(static function ($errno, $errstr, $errfile, $errline) {
     \fwrite(\STDERR, "$errno: $errstr in $errfile on line $errline\n");
 
     exit(1);
 });
 
-set_exception_handler(static function ($exception) {
+\set_exception_handler(static function ($exception) {
     \fwrite(\STDERR, $exception->getMessage() . "\n");
 
     exit(1);
@@ -31,7 +31,7 @@ $version = $package->getVersion();
 
 $path = "${output}/${name}_v${version}_zip.txt";
 
-file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
+\file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
 
 \fwrite(\STDOUT, "::set-output name=compressed::$path\n");
 
@@ -41,7 +41,7 @@ $package = (new \Rah\Mtxpc\Compiler())
 
 $path = "${output}/${name}_v${version}.txt";
 
-file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
+\file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
 
 \fwrite(\STDOUT, "::set-output name=uncompressed::$path\n");
 \fwrite(\STDOUT, "::set-output name=version::$version\n");
