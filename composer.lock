@@ -4,29 +4,33 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2cc8d8d14159f7a1e0f198750328f15e",
+    "content-hash": "945c0e892ed7c14c7a85215d03510226",
     "packages": [
         {
             "name": "rah/mtxpc",
-            "version": "0.4.0",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gocom/MassPlugCompiler.git",
-                "reference": "dde9d64598a9e3ea2ce0ac740e647062d58e5c88"
+                "reference": "4e4cc4bbdb6576fd085f6c538ebf12e0abaef02c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/dde9d64598a9e3ea2ce0ac740e647062d58e5c88",
-                "reference": "dde9d64598a9e3ea2ce0ac740e647062d58e5c88",
+                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/4e4cc4bbdb6576fd085f6c538ebf12e0abaef02c",
+                "reference": "4e4cc4bbdb6576fd085f6c538ebf12e0abaef02c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.0"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpunit": "5.7.*",
                 "squizlabs/php_codesniffer": "3.*"
             },
+            "bin": [
+                "bin/mtxpc"
+            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -50,7 +54,7 @@
                 "plugin",
                 "textpattern"
             ],
-            "time": "2019-10-19T19:31:51+00:00"
+            "time": "2019-10-20T04:41:00+00:00"
         }
     ],
     "packages-dev": [],
