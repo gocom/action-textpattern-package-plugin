@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "945c0e892ed7c14c7a85215d03510226",
+    "content-hash": "0d8d337ddf305ba93937ea5c8f816d86",
     "packages": [
         {
             "name": "rah/mtxpc",
-            "version": "0.6.0",
+            "version": "0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gocom/MassPlugCompiler.git",
-                "reference": "4e4cc4bbdb6576fd085f6c538ebf12e0abaef02c"
+                "reference": "3601a1923105faa75080186dffae653e494fb4dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/4e4cc4bbdb6576fd085f6c538ebf12e0abaef02c",
-                "reference": "4e4cc4bbdb6576fd085f6c538ebf12e0abaef02c",
+                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/3601a1923105faa75080186dffae653e494fb4dd",
+                "reference": "3601a1923105faa75080186dffae653e494fb4dd",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
                 "plugin",
                 "textpattern"
             ],
-            "time": "2019-10-20T04:41:00+00:00"
+            "time": "2019-10-20T19:21:08+00:00"
         }
     ],
     "packages-dev": [],
