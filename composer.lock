@@ -4,28 +4,33 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d8d337ddf305ba93937ea5c8f816d86",
+    "content-hash": "97e8106e638f5a95f5fabbe263e7c23e",
     "packages": [
         {
             "name": "rah/mtxpc",
-            "version": "0.7.0",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gocom/MassPlugCompiler.git",
-                "reference": "3601a1923105faa75080186dffae653e494fb4dd"
+                "reference": "d909186bc0846c4424cac637d856b5eedb026488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/3601a1923105faa75080186dffae653e494fb4dd",
-                "reference": "3601a1923105faa75080186dffae653e494fb4dd",
+                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/d909186bc0846c4424cac637d856b5eedb026488",
+                "reference": "d909186bc0846c4424cac637d856b5eedb026488",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-pcre": "*",
+                "ext-zlib": "*",
                 "php": ">=7.2.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "5.7.*",
+                "phpstan/phpstan": "^0.12.9",
+                "phpunit/phpunit": "8.4.*",
                 "squizlabs/php_codesniffer": "3.*"
             },
             "bin": [
@@ -54,7 +59,7 @@
                 "plugin",
                 "textpattern"
             ],
-            "time": "2019-10-20T19:21:08+00:00"
+            "time": "2020-02-09T03:01:51+00:00"
         }
     ],
     "packages-dev": [],
