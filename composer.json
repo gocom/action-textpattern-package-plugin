@@ -1,5 +1,5 @@
 {
     "require": {
-        "rah/mtxpc": "^0.8.0"
+        "rah/mtxpc": "0.9.1"
     }
 }
