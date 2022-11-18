@@ -1,6 +1,6 @@
-FROM composer
+FROM composer:2.4.3 AS composer
 
-FROM php:7.2-cli
+FROM php:8.1-cli
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -15,7 +15,7 @@ RUN docker-php-ext-install zip
 
 RUN mkdir -p /composer && mkdir -p /compiler
 
-ENV COMPOSER_HOME = /composer
+ENV COMPOSER_HOME /composer
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 

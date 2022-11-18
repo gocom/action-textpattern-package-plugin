@@ -14,13 +14,14 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+$stdout = \getenv('GITHUB_OUTPUT') ?: 'output.txt';
 $workspace = \getenv('GITHUB_WORKSPACE') ?: \getcwd();
 $source = \getenv('INPUT_SOURCE') ?: '';
 $output = \getenv('INPUT_OUTPUT') ?: 'build/packages';
 $ref = \getenv('GITHUB_REF');
-$version = $ref
+$inputVersion = $ref
     ? \basename($ref)
-    : null;
+    : '0.0.0';
 
 if (!\is_dir($output)) {
     \mkdir("$workspace/$output", 0755, true);
@@ -28,7 +29,7 @@ if (!\is_dir($output)) {
 
 $package = (new \Rah\Mtxpc\Compiler())
     ->useCompression(true)
-    ->setVersion($version)
+    ->setVersion($inputVersion)
     ->compile("$workspace/$source");
 
 $name = $package->getName();
@@ -38,16 +39,17 @@ $path = "${output}/${name}_v${version}_zip.txt";
 
 \file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
 
-\fwrite(\STDOUT, "::set-output name=compressed::$path\n");
+\file_put_contents($stdout, "compressed=$path\n", \FILE_APPEND);
 
 $package = (new \Rah\Mtxpc\Compiler())
     ->useCompression(false)
+    ->setVersion($inputVersion)
     ->compile("$workspace/$source");
 
 $path = "${output}/${name}_v${version}.txt";
 
 \file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
 
-\fwrite(\STDOUT, "::set-output name=uncompressed::$path\n");
-\fwrite(\STDOUT, "::set-output name=version::$version\n");
-\fwrite(\STDOUT, "::set-output name=name::$name\n");
+\file_put_contents($stdout, "uncompressed=$path\n", \FILE_APPEND);
+\file_put_contents($stdout, "version=$version\n", \FILE_APPEND);
+\file_put_contents($stdout, "name=$name\n", \FILE_APPEND);

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97e8106e638f5a95f5fabbe263e7c23e",
+    "content-hash": "fc7d85985fecda14b979f67f96a9c6a3",
     "packages": [
         {
             "name": "rah/mtxpc",
-            "version": "0.8.0",
+            "version": "0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gocom/MassPlugCompiler.git",
-                "reference": "d909186bc0846c4424cac637d856b5eedb026488"
+                "reference": "2680db0b65c5a5b0b41e5846cb85faa6431ed8b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/d909186bc0846c4424cac637d856b5eedb026488",
-                "reference": "d909186bc0846c4424cac637d856b5eedb026488",
+                "url": "https://api.github.com/repos/gocom/MassPlugCompiler/zipball/2680db0b65c5a5b0b41e5846cb85faa6431ed8b9",
+                "reference": "2680db0b65c5a5b0b41e5846cb85faa6431ed8b9",
                 "shasum": ""
             },
             "require": {
@@ -28,9 +28,8 @@
                 "php": ">=7.2.0"
             },
             "require-dev": {
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpstan/phpstan": "^0.12.9",
-                "phpunit/phpunit": "8.4.*",
+                "phpstan/phpstan": "^1.5.6",
+                "phpunit/phpunit": "^9.5.20",
                 "squizlabs/php_codesniffer": "3.*"
             },
             "bin": [
@@ -59,7 +58,17 @@
                 "plugin",
                 "textpattern"
             ],
-            "time": "2020-02-09T03:01:51+00:00"
+            "support": {
+                "issues": "https://github.com/gocom/MassPlugCompiler/issues",
+                "source": "https://github.com/gocom/MassPlugCompiler"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/jukkasvahn",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-04-16T15:06:47+00:00"
         }
     ],
     "packages-dev": [],
@@ -69,5 +78,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
