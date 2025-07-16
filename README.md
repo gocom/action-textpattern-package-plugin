@@ -1,7 +1,8 @@
 Package Textpattern CMS plugin GitHub Action
 =====
 
-This [GitHub Action](https://help.github.com/en/articles/about-github-actions) packages a source repository containing a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
+This [GitHub Action](https://help.github.com/en/articles/about-github-actions) packages a source repository containing
+a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
 
 Usage
 -----
@@ -21,7 +22,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v4
 
     - name: Build
       id: build
@@ -33,23 +34,27 @@ jobs:
         cat ${{ github.workspace }}/${{ steps.build.outputs.uncompressed }}
 ```
 
-See [rah_flat](https://github.com/gocom/rah_flat) repository for live [workflow examples](https://github.com/gocom/rah_flat/blob/master/.github/workflows), and [action results](https://github.com/gocom/rah_flat/actions) containing uploaded artifacts.
+See [rah_flat](https://github.com/gocom/rah_flat) repository for live
+[workflow examples](https://github.com/gocom/rah_flat/blob/master/.github/workflows), and
+[releases](https://github.com/gocom/rah_flat/releases) containing uploaded plugin installers.
 
 Input Arguments
 -----
 
 * **source**
-  Path to the plugin source directory, relative to the repository root, if something else than repository root.
+  Path to the plugin source directory containing `manifest.json`. The path is relative to the repository root. Defaults
+  to repository root directory.
 * **output**
-  Path to the output directory where build artifacts are saved to, relative to `$GITHUB_WORKSPACE`. Defaults to `build/packages`.
+  Path to the output directory where build artifacts are saved to, relative to `$GITHUB_WORKSPACE`. Defaults to
+  `build/packages`.
 
 Output Variables
 -----
 
 * **name**
-  Name of the built plugin.
+  The name of the built plugin.
 * **version**
-  Version number from the manifest file.
+  The version number from the manifest file.
 * **compressed**
   Path to the compressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
 * **uncompressed**
