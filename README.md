@@ -2,7 +2,8 @@ Package Textpattern CMS plugin GitHub Action
 =====
 
 This [GitHub Action](https://help.github.com/en/articles/about-github-actions) packages a source repository containing
-a [Textpattern CMS](https://textpattern.com) plugin and creates installers.
+a [Textpattern CMS](https://textpattern.com) plugin and creates installers using
+[mtxpc](https://github.com/gocom/MassPlugCompiler).
 
 Usage
 -----
@@ -41,21 +42,17 @@ See [rah_flat](https://github.com/gocom/rah_flat) repository for live
 Input Arguments
 -----
 
-* **source**
-  Path to the plugin source directory containing `manifest.json`. The path is relative to the repository root. Defaults
-  to repository root directory.
-* **output**
-  Path to the output directory where build artifacts are saved to, relative to `$GITHUB_WORKSPACE`. Defaults to
-  `build/packages`.
+| Input    | Description                                                                                                  | Default                                |
+|----------|--------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| `source` | Path to the plugin source directory containing `manifest.json`. The path is relative to the repository root. | Defaults to repository root directory. |
+| `output` | Path to the output directory where build artifacts are saved to, relative to `$GITHUB_WORKSPACE`.            | `build/packages`.                      |
 
 Output Variables
 -----
 
-* **name**
-  The name of the built plugin.
-* **version**
-  The version number from the manifest file.
-* **compressed**
-  Path to the compressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
-* **uncompressed**
-  Path to the uncompressed plugin installer file, relative to `$GITHUB_WORKSPACE`.
+| Output         | Description                                                                      |
+|----------------|----------------------------------------------------------------------------------|
+| `name`         | The name of the built plugin.                                                    |
+| `version`      | The version number from the manifest file.                                       |
+| `compressed`   | Path to the compressed plugin installer file, relative to `$GITHUB_WORKSPACE`.   |
+| `uncompressed` | Path to the uncompressed plugin installer file, relative to `$GITHUB_WORKSPACE`. |

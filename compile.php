@@ -35,7 +35,12 @@ $package = (new \Rah\Mtxpc\Compiler())
 $name = $package->getName();
 $version = $package->getVersion();
 
-$path = "${output}/${name}_v${version}_zip.txt";
+$path = \sprintf(
+    '%s/%s_v%s_zip.txt',
+    $output,
+    $name,
+    $version
+);
 
 \file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
 
@@ -46,7 +51,12 @@ $package = (new \Rah\Mtxpc\Compiler())
     ->setVersion($inputVersion)
     ->compile("$workspace/$source");
 
-$path = "${output}/${name}_v${version}.txt";
+$path = \sprintf(
+    '%s/%s_v%s.txt',
+    $output,
+    $name,
+    $version
+);
 
 \file_put_contents($workspace . \DIRECTORY_SEPARATOR . $path, $package->getInstaller());
 

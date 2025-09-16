@@ -21,7 +21,7 @@ outputs:
     description: 'Path to the compressed installer file, relative to workspace'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ghcr.io/gocom/action-textpattern-package-plugin:@master'
 branding:
   icon: 'package'
   color: 'gray-dark'
