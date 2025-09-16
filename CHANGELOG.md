@@ -3,7 +3,7 @@
 ## 0.3.0
 
 * Push built image to the registry, so that it doesn't need to be built during the action run.
-* Updates the images PHP runtime to 8.4.
+* Update the image's PHP runtime to 8.4.
 
 ## 0.2.0
 
